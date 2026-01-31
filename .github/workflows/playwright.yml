@@ -5,19 +5,25 @@ on:
     branches:
       - master
   pull_request:
+  workflow_dispatch:
 
 jobs:
   test:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        config: [playwright.desktop.config.ts, playwright.mobile.config.ts]
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
           node-version: 20
+
+      - run: npm ci
+
+      - run: npx playwright install
+
       - run: npm run test:mobile
+        env:
+          BASE_URL: ${{ secrets.BASE_URL }}
+
       - run: npm run test:desktop
         env:
           BASE_URL: ${{ secrets.BASE_URL }}
