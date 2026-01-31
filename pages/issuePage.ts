@@ -5,27 +5,37 @@ export class IssuePage extends Common {
   clearButton = ".icon.icon-reload";
   resultTableRows = "table.list.issues tbody tr";
   filtersTableRows = "#filters-table tr.filter";
+  optionsButton = 'legend[onclick="toggleFieldset(this);"]';
+  moveRightButton = ".move-right";
 
   operatorStatus = "#operators_status_id";
   valueStatus = "#values_status_id_1";
-  filter = "#add_filter_select";
+  filterSelect = "#add_filter_select";
+  optionSelect = "#available_c";
 
   getSumbitButton = () => this.get(this.sumbitButton);
   getFiltersTableRows = () => this.get(this.filtersTableRows);
   getClearButton = () => this.get(this.clearButton);
-  getFirstRow = () => this.get(this.resultTableRows).first();
-  getLastRow = () => this.get(this.resultTableRows).last();
+  getOptionsButton = () => this.get(this.optionsButton);
+  getMoveRightButton = () => this.get(this.moveRightButton);
 
-  getFirstRowStatus = async (): Promise<string> => {
-    return (await this.getFirstRow().locator("td.status").textContent()) ?? "";
-  };
+  getRowColumnText = async (
+    row: "first" | "last",
+    columnClass: string,
+  ): Promise<string> => {
+    let rowLocator;
+    if (row === "first") {
+      rowLocator = this.get(this.resultTableRows).first();
+    } else {
+      rowLocator = this.get(this.resultTableRows).last();
+    }
 
-  getLastRowStatus = async (): Promise<string> => {
-    return (await this.getLastRow().locator("td.status").textContent()) ?? "";
+    const text = await rowLocator.locator(`td.${columnClass}`).textContent();
+    return text?.trim() ?? "";
   };
 
   selectFilter = async (value: string) => {
-    await this.selectOption(this.filter, value);
+    await this.selectOption(this.filterSelect, value);
   };
 
   selectOperatorStatus = async (value: string) => {
@@ -34,5 +44,9 @@ export class IssuePage extends Common {
 
   selectValueStatus = async (value: string) => {
     await this.selectOption(this.valueStatus, value);
+  };
+
+  selectOptions = async (value: string) => {
+    await this.selectOption(this.optionSelect, value);
   };
 }
