@@ -1,21 +1,18 @@
-import { HomePage } from "../pages/homePage";
-import { SearchPage } from "../pages/searchPage";
+import { PageFactory } from "../patterns/PageFactory";
 import { test, expect } from "@playwright/test";
 
 test.describe("Home page tests", () => {
-  let homePage: HomePage;
-  let searchPage: SearchPage;
+  let pages: PageFactory;
   test.beforeEach(async ({ page }) => {
-    homePage = new HomePage(page);
-    searchPage = new SearchPage(page);
-    await homePage.openHome();
+    pages = new PageFactory(page);
+    await pages.homePage.openHome();
   });
 
   test("should display results when searching for a term", async () => {
-    expect(homePage.getSearchInput()).toBeVisible();
-    await homePage.fillSearchInput("test");
-    await homePage.sumbitSearch();
-    const text = await searchPage.getSearchResultCount();
+    expect(pages.homePage.getSearchInput()).toBeVisible();
+    await pages.homePage.fillSearchInput("test");
+    await pages.homePage.sumbitSearch();
+    const text = await pages.searchPage.getSearchResultCount();
     expect(text).toBeGreaterThan(0);
   });
 });
