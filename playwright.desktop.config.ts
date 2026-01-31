@@ -9,7 +9,7 @@ export default defineConfig({
   use: {
     browserName: "chromium",
     viewport: { width: 1920, height: 1080 },
-    headless: false,
+    headless: true,
     screenshot: "only-on-failure",
     video: "retain-on-failure",
     baseURL: process.env.BASE_URL,
