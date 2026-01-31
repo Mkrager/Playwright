@@ -1,13 +1,13 @@
 import { HomePage } from "../pages/homePage";
-import { IssuesPage } from "../pages/issuesPage";
+import { IssuePage } from "../pages/issuePage";
 import { test, expect } from "@playwright/test";
 
 test.describe("Question page tests", () => {
   let homePage: HomePage;
-  let issuesPage: IssuesPage;
+  let issuesPage: IssuePage;
   test.beforeEach(async ({ page }) => {
     homePage = new HomePage(page);
-    issuesPage = new IssuesPage(page);
+    issuesPage = new IssuePage(page);
     await homePage.openHome();
   });
 

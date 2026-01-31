@@ -1,6 +1,6 @@
 import { Common } from "./common";
 
-export class IssuesPage extends Common {
+export class IssuePage extends Common {
   sumbitButton = 'a[onclick*="query_form"]';
   clearButton = ".icon.icon-reload";
   resultTableRows = "table.list.issues tbody tr";
