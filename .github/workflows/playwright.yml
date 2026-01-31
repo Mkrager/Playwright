@@ -10,8 +10,12 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        project: [mobile, desktop]
     steps:
       - uses: actions/checkout@v3
+
       - uses: actions/setup-node@v3
         with:
           node-version: 20
@@ -20,10 +24,7 @@ jobs:
 
       - run: npx playwright install
 
-      - run: npm run test:mobile
-        env:
-          BASE_URL: ${{ secrets.BASE_URL }}
-
-      - run: npm run test:desktop
+      - name: Run Playwright tests
+        run: npm run test:${{ matrix.project }}
         env:
           BASE_URL: ${{ secrets.BASE_URL }}
