@@ -11,11 +11,11 @@ test.describe("Home page tests", () => {
     await homePage.openHome();
   });
 
-  test("Search test", async () => {
+  test("should display results when searching for a term", async () => {
     expect(homePage.getSearchInput()).toBeVisible();
     await homePage.fillSearchInput("test");
-    await homePage.getSearchLink().click();
-    const count = await searchPage.getSearchResultCount();
-    expect(count).toBeGreaterThan(0);
+    await homePage.sumbitSearch();
+    const text = await searchPage.getSearchResultCount();
+    expect(text).toBeGreaterThan(0);
   });
 });

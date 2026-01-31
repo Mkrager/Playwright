@@ -19,7 +19,9 @@ export abstract class Common {
 
   getSearchInput = () => this.get(this.searchInput);
 
-  getSearchLink = () => this.get('a[accesskey="4"]');
+  async sumbitSearch() {
+    await this.getSearchInput().press("Enter");
+  }
 
   async fillSearchInput(input: string) {
     await this.getSearchInput().fill(input);
