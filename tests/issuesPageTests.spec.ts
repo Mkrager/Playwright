@@ -23,4 +23,14 @@ test.describe("Question page tests", () => {
     expect(firstRowStatus.trim()).toBe("New");
     expect(lastRowStatus.trim()).toBe("New");
   });
+
+  test("should clear filters", async () => {
+    expect(homePage.getIssuesButton()).toBeVisible();
+    await homePage.getIssuesButton().click();
+    await issuesPage.selectFilter("tracker_id");
+    await issuesPage.getClearButton().click();
+
+    const filterRows = issuesPage.getFiltersTableRows();
+    await expect(filterRows).toHaveCount(1);
+  });
 });
