@@ -6,6 +6,10 @@ export class IssuesPage extends Common {
   resultTableRows = "table.list.issues tbody tr";
   filtersTableRows = "#filters-table tr.filter";
 
+  operatorStatus = "#operators_status_id";
+  valueStatus = "#values_status_id_1";
+  filter = "#add_filter_select";
+
   getSumbitButton = () => this.get(this.sumbitButton);
   getFiltersTableRows = () => this.get(this.filtersTableRows);
   getClearButton = () => this.get(this.clearButton);
@@ -21,14 +25,14 @@ export class IssuesPage extends Common {
   };
 
   selectFilter = async (value: string) => {
-    await this.page.selectOption("#add_filter_select", value);
+    await this.selectOption(this.filter, value);
   };
 
   selectOperatorStatus = async (value: string) => {
-    await this.page.selectOption("#operators_status_id", value);
+    await this.selectOption(this.operatorStatus, value);
   };
 
   selectValueStatus = async (value: string) => {
-    await this.page.selectOption("#values_status_id_1", value);
+    await this.selectOption(this.valueStatus, value);
   };
 }

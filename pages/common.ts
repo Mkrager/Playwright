@@ -12,6 +12,9 @@ export abstract class Common {
     await this.page.waitForLoadState();
   }
 
+  selectOption = async (locator: string, value: string) => {
+    await this.page.selectOption(locator, value);
+  };
   get = (locator: string): Locator => this.page.locator(locator);
 
   // Header
