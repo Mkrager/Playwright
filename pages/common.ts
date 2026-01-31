@@ -16,8 +16,10 @@ export abstract class Common {
 
   // Header
   searchInput = "#q";
-
+  issuesButton = ".issues";
   getSearchInput = () => this.get(this.searchInput);
+
+  getIssuesButton = () => this.get(this.issuesButton);
 
   async sumbitSearch() {
     await this.getSearchInput().press("Enter");
