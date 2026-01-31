@@ -3,7 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "test:desktop": "npx playwright test --config=playwright.desktop.config.ts",
+    "test:mobile": "npx playwright test --config=playwright.mobile.config.ts"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
