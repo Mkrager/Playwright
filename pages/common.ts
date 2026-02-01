@@ -31,7 +31,6 @@ export abstract class Common {
   mobileSearchButton = "#flyout-search";
   issuesButton = ".issues";
   forumButton = ".boards";
-  sideBarButton = ".mobile-toggle-button.js-flyout-menu-toggle-button";
 
   getSearchInput = () => {
     const isMobile = this.page.viewportSize()?.width! < 768;
@@ -42,7 +41,6 @@ export abstract class Common {
   };
   getIssuesButton = () => this.get(this.issuesButton);
   getForumButton = () => this.get(this.forumButton);
-  getSideBarButton = () => this.get(this.sideBarButton);
 
   async sumbitSearch() {
     await this.getSearchInput().press("Enter");
