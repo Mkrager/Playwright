@@ -1,4 +1,4 @@
-import { PageFactory } from "../patterns/PageFactory";
+import { PageFactory } from "../pages/PageFactory";
 import { test, expect } from "@playwright/test";
 
 test.describe("Home page tests", () => {
@@ -9,9 +9,6 @@ test.describe("Home page tests", () => {
   });
 
   test("should display results when searching for a term", async () => {
-    if (await pages.homePage.getSideBarButton().isVisible())
-      await pages.homePage.getSideBarButton().click();
-
     expect(pages.homePage.getSearchInput()).toBeVisible();
     await pages.homePage.fillSearchInput("test");
     await pages.homePage.sumbitSearch();

@@ -1,4 +1,4 @@
-import { PageFactory } from "../patterns/PageFactory";
+import { PageFactory } from "../pages/PageFactory";
 import { test, expect } from "@playwright/test";
 
 test.describe("Question page tests", () => {

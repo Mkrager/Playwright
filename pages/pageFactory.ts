@@ -1,8 +1,8 @@
 import { Page } from "@playwright/test";
-import { HomePage } from "../pages/homePage";
-import { IssuePage } from "../pages/issuePage";
-import { ForumPage } from "../pages/forumPage";
-import { SearchPage } from "../pages/searchPage";
+import { HomePage } from "./homePage";
+import { IssuePage } from "./issuePage";
+import { ForumPage } from "./forumPage";
+import { SearchPage } from "./searchPage";
 
 export class PageFactory {
   page: Page;

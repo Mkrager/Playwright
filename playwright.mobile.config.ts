@@ -7,7 +7,6 @@ export default defineConfig({
   retries: 1,
   use: {
     browserName: "chromium",
-    ...devices["Pixel 5"],
     headless: true,
     baseURL: process.env.BASE_URL,
   },

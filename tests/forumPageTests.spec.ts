@@ -1,5 +1,5 @@
-import { PageFactory } from "../patterns/PageFactory";
 import { test, expect } from "@playwright/test";
+import { PageFactory } from "../pages/PageFactory";
 
 test.describe("Forum page tests", () => {
   let pages: PageFactory;
